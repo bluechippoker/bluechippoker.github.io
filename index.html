@@ -19,15 +19,16 @@
             min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 0;
-            overflow: hidden;
+            align-items: flex-start;
+            padding: 10px 0;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         /* Container optimized for Instagram vertical (9:16 aspect ratio) */
         .poker-container {
             width: 390px;
-            height: 844px;
+            min-height: 844px;
             background: #00FF00;
             /* Chroma key green */
             display: flex;
@@ -36,6 +37,7 @@
             align-items: center;
             position: relative;
             gap: 40px;
+            margin: 0 auto;
         }
 
         /* Community cards section */
@@ -947,6 +949,7 @@
             padding: 20px;
             border-radius: 15px;
             max-height: 80vh;
+            max-width: 90vw;
             overflow-y: auto;
         }
 
@@ -1135,10 +1138,129 @@
             transition: all 0.25s ease;
         }
 
-        @media (max-width: 480px) {
+        /* Responsive design for smaller devices */
+        @media (max-width: 420px) {
             .poker-container {
-                width: 100vw;
-                height: 100vh;
+                width: 95vw;
+                min-height: 100vh;
+                gap: 30px;
+                padding: 20px 0;
+            }
+
+            .card {
+                width: 56px;
+                height: 89px;
+            }
+
+            .player-card {
+                width: 57px;
+                height: 48px;
+            }
+
+            .community-cards {
+                gap: 6px;
+            }
+
+            .player-hand {
+                gap: 6px;
+            }
+
+            .pot-display {
+                font-size: 24px;
+                padding: 12px 30px;
+                margin-top: -40px;
+            }
+
+            .controls {
+                bottom: 10px;
+                gap: 8px;
+            }
+
+            .control-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+
+            .card-selector-dialog {
+                padding: 15px;
+                max-width: 95vw;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .selectable-card {
+                width: 50px;
+                height: 70px;
+            }
+
+            .selectable-card.small {
+                width: 56px;
+                height: 47px;
+            }
+
+            .pot-input-dialog,
+            .betting-config-dialog {
+                padding: 20px;
+                max-width: 95vw;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .poker-container {
+                width: 98vw;
+                gap: 25px;
+            }
+
+            .card {
+                width: 50px;
+                height: 80px;
+            }
+
+            .player-card {
+                width: 51px;
+                height: 43px;
+            }
+
+            .community-cards {
+                gap: 4px;
+            }
+
+            .player-hand {
+                gap: 4px;
+            }
+
+            .pot-display {
+                font-size: 20px;
+                padding: 10px 25px;
+            }
+
+            .control-btn {
+                padding: 5px 10px;
+                font-size: 10px;
+            }
+
+            .card-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .selectable-card {
+                width: 45px;
+                height: 63px;
+            }
+
+            .selectable-card.small {
+                width: 51px;
+                height: 43px;
+            }
+
+            .pot-input-dialog,
+            .betting-config-dialog {
+                padding: 15px;
+                max-width: 98vw;
             }
         }
     </style>
