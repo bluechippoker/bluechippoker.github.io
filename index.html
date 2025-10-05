@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poker Table - Instagram Vertical</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #00FF00;
+            /* Chroma key green */
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        /* Container optimized for Instagram vertical (9:16 aspect ratio) */
+        .poker-container {
+            width: 390px;
+            height: 844px;
+            background: #00FF00;
+            /* Chroma key green */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            gap: 40px;
+        }
+
+        /* Community cards section */
+        .community-cards {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            width: 66px;
+            height: 105px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Card background images - Large cards */
+        .card-large-hearts-ace {
+            background-image: url('cards/large/Hearts-Ace.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-2 {
+            background-image: url('cards/large/Hearts-2.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-3 {
+            background-image: url('cards/large/Hearts-3.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-4 {
+            background-image: url('cards/large/Hearts-4.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-5 {
+            background-image: url('cards/large/Hearts-5.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-6 {
+            background-image: url('cards/large/Hearts-6.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-7 {
+            background-image: url('cards/large/Hearts-7.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-8 {
+            background-image: url('cards/large/Hearts-8.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-9 {
+            background-image: url('cards/large/Hearts-9.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-10 {
+            background-image: url('cards/large/Hearts-10.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-jack {
+            background-image: url('cards/large/Hearts-Jack.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-queen {
+            background-image: url('cards/large/Hearts-Queen.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-hearts-king {
+            background-image: url('cards/large/Hearts-King.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-ace {
+            background-image: url('cards/large/Diamonds-Ace.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-2 {
+            background-image: url('cards/large/Diamonds-2.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-3 {
+            background-image: url('cards/large/Diamonds-3.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-4 {
+            background-image: url('cards/large/Diamonds-4.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-5 {
+            background-image: url('cards/large/Diamonds-5.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-6 {
+            background-image: url('cards/large/Diamonds-6.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-7 {
+            background-image: url('cards/large/Diamonds-7.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-8 {
+            background-image: url('cards/large/Diamonds-8.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-9 {
+            background-image: url('cards/large/Diamonds-9.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-10 {
+            background-image: url('cards/large/Diamonds-10.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-jack {
+            background-image: url('cards/large/Diamonds-Jack.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-queen {
+            background-image: url('cards/large/Diamonds-Queen.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-diamonds-king {
+            background-image: url('cards/large/Diamonds-King.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-ace {
+            background-image: url('cards/large/Clubs-Ace.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-2 {
+            background-image: url('cards/large/Clubs-2.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-3 {
+            background-image: url('cards/large/Clubs-3.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-4 {
+            background-image: url('cards/large/Clubs-4.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-5 {
+            background-image: url('cards/large/Clubs-5.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-6 {
+            background-image: url('cards/large/Clubs-6.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-7 {
+            background-image: url('cards/large/Clubs-7.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-8 {
+            background-image: url('cards/large/Clubs-8.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-9 {
+            background-image: url('cards/large/Clubs-9.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-10 {
+            background-image: url('cards/large/Clubs-10.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-jack {
+            background-image: url('cards/large/Clubs-Jack.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-queen {
+            background-image: url('cards/large/Clubs-Queen.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-clubs-king {
+            background-image: url('cards/large/Clubs-King.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-ace {
+            background-image: url('cards/large/Spades-Ace.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-2 {
+            background-image: url('cards/large/Spades-2.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-3 {
+            background-image: url('cards/large/Spades-3.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-4 {
+            background-image: url('cards/large/Spades-4.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-5 {
+            background-image: url('cards/large/Spades-5.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-6 {
+            background-image: url('cards/large/Spades-6.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-7 {
+            background-image: url('cards/large/Spades-7.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-8 {
+            background-image: url('cards/large/Spades-8.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-9 {
+            background-image: url('cards/large/Spades-9.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-10 {
+            background-image: url('cards/large/Spades-10.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-jack {
+            background-image: url('cards/large/Spades-Jack.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-queen {
+            background-image: url('cards/large/Spades-Queen.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .card-large-spades-king {
+            background-image: url('cards/large/Spades-King.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        /* Card background images - Small cards */
+        .card-small-hearts-1 {
+            background-image: url('cards/small/Hearts Small - 1.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-2 {
+            background-image: url('cards/small/Hearts Small - 2.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-3 {
+            background-image: url('cards/small/Hearts Small - 3.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-4 {
+            background-image: url('cards/small/Hearts Small - 4.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-5 {
+            background-image: url('cards/small/Hearts Small - 5.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-6 {
+            background-image: url('cards/small/Hearts Small - 6.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-7 {
+            background-image: url('cards/small/Hearts Small - 7.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-8 {
+            background-image: url('cards/small/Hearts Small - 8.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-9 {
+            background-image: url('cards/small/Hearts Small - 9.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-10 {
+            background-image: url('cards/small/Hearts Small - 10.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-11 {
+            background-image: url('cards/small/Hearts Small - 11.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-12 {
+            background-image: url('cards/small/Hearts Small - 12.png');
+            background-size: cover;
+        }
+
+        .card-small-hearts-13 {
+            background-image: url('cards/small/Hearts Small - 13.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-1 {
+            background-image: url('cards/small/Diamonds Small - 1.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-2 {
+            background-image: url('cards/small/Diamonds Small - 2.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-3 {
+            background-image: url('cards/small/Diamonds Small - 3.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-4 {
+            background-image: url('cards/small/Diamonds Small - 4.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-5 {
+            background-image: url('cards/small/Diamonds Small - 5.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-6 {
+            background-image: url('cards/small/Diamonds Small - 6.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-7 {
+            background-image: url('cards/small/Diamonds Small - 7.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-8 {
+            background-image: url('cards/small/Diamonds Small - 8.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-9 {
+            background-image: url('cards/small/Diamonds Small - 9.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-10 {
+            background-image: url('cards/small/Diamonds Small - 10.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-11 {
+            background-image: url('cards/small/Diamonds Small - 11.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-12 {
+            background-image: url('cards/small/Diamonds Small - 12.png');
+            background-size: cover;
+        }
+
+        .card-small-diamonds-13 {
+            background-image: url('cards/small/Diamonds Small - 13.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-1 {
+            background-image: url('cards/small/Clubs Small - 1.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-2 {
+            background-image: url('cards/small/Clubs Small - 2.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-3 {
+            background-image: url('cards/small/Clubs Small - 3.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-4 {
+            background-image: url('cards/small/Clubs Small - 4.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-5 {
+            background-image: url('cards/small/Clubs Small - 5.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-6 {
+            background-image: url('cards/small/Clubs Small - 6.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-7 {
+            background-image: url('cards/small/Clubs Small - 7.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-8 {
+            background-image: url('cards/small/Clubs Small - 8.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-9 {
+            background-image: url('cards/small/Clubs Small - 9.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-10 {
+            background-image: url('cards/small/Clubs Small - 10.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-11 {
+            background-image: url('cards/small/Clubs Small - 11.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-12 {
+            background-image: url('cards/small/Clubs Small - 12.png');
+            background-size: cover;
+        }
+
+        .card-small-clubs-13 {
+            background-image: url('cards/small/Clubs Small - 13.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-1 {
+            background-image: url('cards/small/Spades Small - 1.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-2 {
+            background-image: url('cards/small/Spades Small - 2.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-3 {
+            background-image: url('cards/small/Spades Small - 3.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-4 {
+            background-image: url('cards/small/Spades Small - 4.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-5 {
+            background-image: url('cards/small/Spades Small - 5.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-6 {
+            background-image: url('cards/small/Spades Small - 6.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-7 {
+            background-image: url('cards/small/Spades Small - 7.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-8 {
+            background-image: url('cards/small/Spades Small - 8.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-9 {
+            background-image: url('cards/small/Spades Small - 9.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-10 {
+            background-image: url('cards/small/Spades Small - 10.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-11 {
+            background-image: url('cards/small/Spades Small - 11.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-12 {
+            background-image: url('cards/small/Spades Small - 12.png');
+            background-size: cover;
+        }
+
+        .card-small-spades-13 {
+            background-image: url('cards/small/Spades Small - 13.png');
+            background-size: cover;
+        }
+
+        .card.empty {
+            background: rgba(255, 255, 255, 0.3);
+            border: 3px dashed rgba(0, 0, 0, 0.3);
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Player hand cards */
+        .player-hand {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .player-card {
+            width: 67.2px;
+            height: 56px;
+            background: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .player-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+
+        .player-card.empty {
+            background: rgba(255, 255, 255, 0.3);
+            border: 2px dashed rgba(0, 0, 0, 0.3);
+            color: rgba(0, 0, 0, 0.5);
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* Pot display */
+        .pot-display {
+            background: black;
+            color: white;
+            padding: 15px 40px;
+            border-radius: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+            margin-top: -50px;
+        }
+
+        /* Controls */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .control-btn {
+            padding: 8px 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .control-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .control-btn.play {
+            background: #000000;
+        }
+
+        .control-btn.play:hover {
+            background: #333333;
+        }
+
+        .control-btn.config {
+            background: #007bff;
+        }
+
+        .control-btn.config:hover {
+            background: #0056b3;
+        }
+
+        .control-btn:disabled {
+            background: #6c757d !important;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+
+        .control-btn.play:disabled {
+            background: #6c757d !important;
+        }
+
+        .control-btn.play:not(:disabled) {
+            background: #000000 !important;
+        }
+
+        .control-btn.play:not(:disabled):hover {
+            background: #333333 !important;
+        }
+
+        /* Pot input overlay */
+        .pot-input-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .pot-input-dialog {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .pot-input-dialog input {
+            width: 200px;
+            padding: 15px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .pot-input-dialog button {
+            padding: 12px 25px;
+            margin: 0 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .pot-input-dialog .confirm-btn {
+            background: #28a745;
+            color: white;
+        }
+
+        .pot-input-dialog .cancel-btn {
+            background: #6c757d;
+            color: white;
+        }
+
+        /* Betting Config Overlay */
+        .betting-config-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .betting-config-dialog {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .betting-config-dialog h3 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .betting-round {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .betting-round label {
+            font-weight: bold;
+            color: #333;
+            min-width: 80px;
+            text-align: left;
+        }
+
+        .betting-round input {
+            width: 120px;
+            padding: 8px 12px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .betting-config-dialog .button-row {
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        /* Card selector overlay */
+        .card-selector-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .card-selector-dialog {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .selectable-card {
+            width: 60px;
+            height: 84px;
+            background: white;
+            border: 2px solid black;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .selectable-card.small {
+            width: 67.2px;
+            height: 56px;
+            background-size: cover;
+        }
+
+        .selectable-card:hover {
+            transform: scale(1.05);
+            border-color: #007bff;
+        }
+
+
+        /* Loading overlay */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #00FF00;
+            /* Chroma key green */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .loading-overlay.hidden {
+            display: none;
+        }
+
+        .loading-content {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 40px;
+            border-radius: 20px;
+            color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .loading-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .loading-subtitle {
+            font-size: 18px;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        .progress-container {
+            width: 300px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg,
+                    transparent,
+                    rgba(255, 255, 255, 0.3),
+                    transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .progress-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .loading-details {
+            font-size: 14px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* Temporary animated cards */
+        .temp-card {
+            position: absolute;
+            width: 66px;
+            /* Same size as final community cards */
+            height: 105px;
+            /* Same size as final community cards */
+            background-color: white;
+            border: 2px solid #333;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.25s ease;
+        }
+
+        .temp-card.revealed {
+            opacity: 1;
+            transform: scale(1.25);
+        }
+
+
+        .temp-card.moving {
+            transition: all 0.25s ease;
+        }
+
+        @media (max-width: 480px) {
+            .poker-container {
+                width: 100vw;
+                height: 100vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-content">
+            <div class="loading-title">Poker Table</div>
+            <div class="loading-subtitle">Loading card graphics...</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0 / 104 images loaded</div>
+            <div class="loading-details" id="loadingDetails">Preparing deck...</div>
+        </div>
+    </div>
+
+    <div class="poker-container">
+        <!-- Community Cards -->
+        <div class="community-cards">
+            <div class="card empty" onclick="toggleCommunityCard(0)">
+                <div>?</div>
+            </div>
+            <div class="card empty" onclick="toggleCommunityCard(1)">
+                <div>?</div>
+            </div>
+            <div class="card empty" onclick="toggleCommunityCard(2)">
+                <div>?</div>
+            </div>
+            <div class="card empty" onclick="toggleCommunityCard(3)">
+                <div>?</div>
+            </div>
+            <div class="card empty" onclick="toggleCommunityCard(4)">
+                <div>?</div>
+            </div>
+        </div>
+
+        <!-- Player Hand -->
+        <div class="player-hand">
+            <div class="player-card empty" onclick="selectPlayerCard(0)">
+                <div>?</div>
+            </div>
+            <div class="player-card empty" onclick="selectPlayerCard(1)">
+                <div>?</div>
+            </div>
+        </div>
+
+        <!-- Pot Display -->
+        <div class="pot-display" onclick="showPotInput()">
+            POT: $<span id="potAmount">200</span>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button class="control-btn" onclick="dealNewCards()">Deal New</button>
+            <button class="control-btn" onclick="resetTable()">Reset</button>
+            <button class="control-btn config" onclick="showBettingConfig()">Configure Betting</button>
+            <button class="control-btn play" id="playButton" onclick="playBettingSequence()"
+                style="display: none;">Play</button>
+        </div>
+    </div>
+
+    <!-- Pot Input Overlay -->
+    <div class="pot-input-overlay" id="potInputOverlay">
+        <div class="pot-input-dialog">
+            <h3>Set Pot Amount</h3>
+            <input type="number" id="potInput" placeholder="Enter amount" min="0">
+            <div>
+                <button class="confirm-btn" onclick="updatePot()">Update</button>
+                <button class="cancel-btn" onclick="hidePotInput()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Betting Configuration Overlay -->
+    <div class="betting-config-overlay" id="bettingConfigOverlay">
+        <div class="betting-config-dialog">
+            <h3>Configure Betting Rounds</h3>
+
+            <div class="betting-round">
+                <label>Preflop:</label>
+                <input type="number" id="preflopPot" placeholder="0" min="0">
+            </div>
+
+            <div class="betting-round">
+                <label>Flop:</label>
+                <input type="number" id="flopPot" placeholder="0" min="0">
+            </div>
+
+            <div class="betting-round">
+                <label>Turn:</label>
+                <input type="number" id="turnPot" placeholder="0" min="0">
+            </div>
+
+            <div class="betting-round">
+                <label>River:</label>
+                <input type="number" id="riverPot" placeholder="0" min="0">
+            </div>
+
+            <div class="betting-round">
+                <label>Final:</label>
+                <input type="number" id="finalPot" placeholder="0" min="0">
+            </div>
+
+            <div class="button-row">
+                <button class="confirm-btn" onclick="saveBettingConfig()">Save Configuration</button>
+                <button class="cancel-btn" onclick="hideBettingConfig()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card Selector Overlay -->
+    <div class="card-selector-overlay" id="cardSelectorOverlay">
+        <div class="card-selector-dialog">
+            <h3>Select Card</h3>
+            <div class="card-grid" id="cardGrid">
+                <!-- Cards will be generated by JavaScript -->
+            </div>
+            <button class="cancel-btn" onclick="hideCardSelector()">Cancel</button>
+        </div>
+    </div>
+
+    <!-- Audio elements for sound effects -->
+    <audio id="cardFlipSound" preload="auto">
+        <source src="sounds/card-flip.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="whooshSound" preload="auto">
+        <source src="sounds/whoosh.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Card data
+        const suits = [
+            { name: 'Hearts', symbol: '♥', class: 'hearts' },
+            { name: 'Diamonds', symbol: '♦', class: 'diamonds' },
+            { name: 'Clubs', symbol: '♣', class: 'clubs' },
+            { name: 'Spades', symbol: '♠', class: 'spades' }
+        ];
+
+        const values = [
+            { display: 'A', file: '1' },
+            { display: '2', file: '2' },
+            { display: '3', file: '3' },
+            { display: '4', file: '4' },
+            { display: '5', file: '5' },
+            { display: '6', file: '6' },
+            { display: '7', file: '7' },
+            { display: '8', file: '8' },
+            { display: '9', file: '9' },
+            { display: '10', file: '10' },
+            { display: 'J', file: '11' },
+            { display: 'Q', file: '12' },
+            { display: 'K', file: '13' }
+        ];
+
+        let currentPot = 200;
+        let selectedCardSlot = null;
+
+        // Betting configuration variables
+        let bettingConfig = {
+            preflop: 0,
+            flop: 0,
+            turn: 0,
+            river: 0,
+            final: 0
+        };
+        let isConfigured = false;
+        let isPlaying = false;
+
+        // Track current card state
+        let currentCommunityCards = [null, null, null, null, null];
+        let currentPlayerCards = [null, null];
+
+        // Helper function to get CSS class for large cards
+        function getCardCSSClass(suit, value) {
+            // Map numeric values to card names for CSS classes
+            const valueMap = {
+                '1': 'ace',
+                '11': 'jack',
+                '12': 'queen',
+                '13': 'king',
+                '2': '2', '3': '3', '4': '4', '5': '5', '6': '6',
+                '7': '7', '8': '8', '9': '9', '10': '10'
+            };
+            const cardName = valueMap[value] || value;
+            const suitName = suit.toLowerCase();
+            return `card-large-${suitName}-${cardName}`;
+        }
+
+        // Helper function to get CSS class for small cards
+        function getSmallCardCSSClass(suit, value) {
+            const suitName = suit.toLowerCase();
+            return `card-small-${suitName}-${value}`;
+        }
+
+        // Helper function to get small card image path (fallback for dynamic loading)
+        function getSmallCardImagePath(suit, value) {
+            return `cards/small/${suit} Small - ${value}.png`;
+        }
+
+        // Helper function to get large card image path
+        function getLargeCardImagePath(suit, value) {
+            // Map numeric values to card names for large cards
+            const valueMap = {
+                '1': 'Ace',
+                '11': 'Jack',
+                '12': 'Queen',
+                '13': 'King',
+                '2': '2', '3': '3', '4': '4', '5': '5', '6': '6',
+                '7': '7', '8': '8', '9': '9', '10': '10'
+            };
+            const cardName = valueMap[value] || value;
+            return `cards/large/${suit}-${cardName}.png`;
+        }
+
+        // Preload all card images with progress tracking
+        const imageCache = new Map();
+        let loadingProgress = {
+            loaded: 0,
+            total: 104,
+            currentSuit: '',
+            currentCard: ''
+        };
+
+        function updateLoadingProgress(loadedCount, totalImages, cardName = '') {
+            loadingProgress.loaded = loadedCount;
+            loadingProgress.total = totalImages;
+
+            const progressBar = document.getElementById('progressBar');
+            const progressText = document.getElementById('progressText');
+            const loadingDetails = document.getElementById('loadingDetails');
+
+            const percentage = Math.round((loadedCount / totalImages) * 100);
+
+            progressBar.style.width = `${percentage}%`;
+            progressText.textContent = `${loadedCount} / ${totalImages} images loaded`;
+
+            if (cardName) {
+                loadingDetails.textContent = `Loading ${cardName}...`;
+            }
+
+            // Hide loading overlay when all images are loaded
+            if (loadedCount >= totalImages) {
+                setTimeout(() => {
+                    document.getElementById('loadingOverlay').classList.add('hidden');
+                }, 500); // Small delay to show 100% completion
+            }
+        }
+
+        function preloadCardImages() {
+            return new Promise((resolve) => {
+                const allCards = generateAllCards();
+                let loadedCount = 0;
+                const totalImages = allCards.length * 2; // Both large and small versions
+
+                updateLoadingProgress(0, totalImages, 'Preparing deck...');
+                console.log(`Starting to preload ${totalImages} card images (both large and small)...`);
+
+                let loadedSmall = 0;
+                let loadedLarge = 0;
+
+                allCards.forEach(card => {
+                    const cardName = `${card.value.display} of ${card.suit.name}`;
+
+                    // Preload small version
+                    const smallImg = new Image();
+                    smallImg.onload = () => {
+                        loadedSmall++;
+                        loadedCount++;
+                        imageCache.set(`small-${card.suit.name}-${card.value.file}`, smallImg);
+                        updateLoadingProgress(loadedCount, totalImages, cardName + ' (Small)');
+                        console.log(`Small card loaded: ${cardName} (${loadedCount}/${totalImages})`);
+
+                        if (loadedCount >= totalImages) {
+                            console.log('All card images loaded successfully!');
+                            resolve();
+                        }
+                    };
+                    smallImg.onerror = () => {
+                        loadedSmall++;
+                        loadedCount++;
+                        updateLoadingProgress(loadedCount, totalImages, `Failed: ${cardName} (Small)`);
+                        const smallPath = getSmallCardImagePath(card.suit.name, card.value.file);
+                        console.error(`Failed to load small card: ${cardName} from ${smallPath}`);
+
+                        if (loadedCount >= totalImages) {
+                            console.log('Card image loading completed (some failed)');
+                            resolve();
+                        }
+                    };
+                    const smallPath = getSmallCardImagePath(card.suit.name, card.value.file);
+                    console.log(`Trying to load small card: ${cardName} from ${smallPath}`);
+                    smallImg.src = smallPath;
+
+                    // Preload large version
+                    const largeImg = new Image();
+                    largeImg.onload = () => {
+                        loadedLarge++;
+                        loadedCount++;
+                        imageCache.set(`large-${card.suit.name}-${card.value.file}`, largeImg);
+                        updateLoadingProgress(loadedCount, totalImages, cardName + ' (Large)');
+                        console.log(`Large card loaded: ${cardName} (${loadedCount}/${totalImages})`);
+
+                        if (loadedCount >= totalImages) {
+                            console.log('All card images loaded successfully!');
+                            resolve();
+                        }
+                    };
+                    largeImg.onerror = () => {
+                        loadedLarge++;
+                        loadedCount++;
+                        updateLoadingProgress(loadedCount, totalImages, `Failed: ${cardName} (Large)`);
+                        const largePath = getLargeCardImagePath(card.suit.name, card.value.file);
+                        console.error(`Failed to load large card: ${cardName} from ${largePath}`);
+
+                        if (loadedCount >= totalImages) {
+                            console.log('Card image loading completed (some failed)');
+                            resolve();
+                        }
+                    };
+                    const largePath = getLargeCardImagePath(card.suit.name, card.value.file);
+                    console.log(`Trying to load large card: ${cardName} from ${largePath}`);
+                    largeImg.src = largePath;
+                });
+
+                // Timeout fallback in case some images never load
+                setTimeout(() => {
+                    if (loadedCount < totalImages) {
+                        console.log('Image loading timeout - showing app anyway');
+                        document.getElementById('loadingOverlay').classList.add('hidden');
+                        resolve();
+                    }
+                }, 15000); // 15 second timeout for all images
+            });
+        }
+
+
+        // Enhanced audio system for better card animation effects
+        const audioSettings = {
+            masterVolume: 0.7,
+            cardFlipVolume: 0.8,
+            whooshVolume: 0.6,
+            overlayVolume: 0.4
+        };
+
+        // Sound effect functions with enhanced timing and volume control
+        function playCardFlipSound(volume = audioSettings.cardFlipVolume, delay = 0) {
+            setTimeout(() => {
+                console.log('🎵 Playing card flip sound...');
+                const audio = document.getElementById('cardFlipSound');
+                if (!audio) {
+                    console.error('❌ Card flip audio element not found!');
+                    return;
+                }
+
+                // Clone audio to allow multiple simultaneous plays
+                const audioClone = audio.cloneNode();
+                audioClone.volume = volume * audioSettings.masterVolume;
+
+                // Add slight pitch variation for more realistic effect
+                if (audioClone.playbackRate !== undefined) {
+                    audioClone.playbackRate = 0.9 + (Math.random() * 0.2); // 0.9 to 1.1
+                }
+
+                audioClone.play()
+                    .then(() => console.log('✅ Card flip sound played successfully'))
+                    .catch(e => console.error('❌ Could not play card flip sound:', e));
+            }, delay);
+        }
+
+        function playWhooshSound(volume = audioSettings.whooshVolume, delay = 0) {
+            setTimeout(() => {
+                console.log('🎵 Playing whoosh sound...');
+                const audio = document.getElementById('whooshSound');
+                if (!audio) {
+                    console.error('❌ Whoosh audio element not found!');
+                    return;
+                }
+
+                // Clone audio to allow multiple simultaneous plays
+                const audioClone = audio.cloneNode();
+                audioClone.volume = volume * audioSettings.masterVolume;
+
+                audioClone.play()
+                    .then(() => console.log('✅ Whoosh sound played successfully'))
+                    .catch(e => console.error('❌ Could not play whoosh sound:', e));
+            }, delay);
+        }
+
+        // Enhanced card flip sound for multiple cards (with staggered timing)
+        function playMultipleCardFlips(count, baseDelay = 0, intervalMs = 50) {
+            for (let i = 0; i < count; i++) {
+                const delay = baseDelay + (i * intervalMs);
+                const volume = audioSettings.cardFlipVolume * (0.8 + (Math.random() * 0.4)); // Volume variation
+                playCardFlipSound(volume, delay);
+            }
+        }
+
+        // Atmospheric whoosh for card movements
+        function playCardMovementSound(delay = 0, intensity = 1.0) {
+            const volume = audioSettings.whooshVolume * intensity;
+            playWhooshSound(volume, delay);
+        }
+
+        // Audio feedback for UI interactions
+        function playUISound(type = 'click') {
+            // For now, use a subtle card flip for UI interactions
+            playCardFlipSound(audioSettings.overlayVolume * 0.5);
+        }
+
+        // Generate all possible cards
+        function generateAllCards() {
+            const cards = [];
+            suits.forEach(suit => {
+                values.forEach(value => {
+                    cards.push({ value, suit });
+                });
+            });
+            return cards;
+        }
+
+        // Show pot input dialog
+        function showPotInput() {
+            document.getElementById('potInputOverlay').style.display = 'flex';
+            document.getElementById('potInput').value = currentPot;
+            document.getElementById('potInput').focus();
+        }
+
+        // Hide pot input dialog
+        function hidePotInput() {
+            document.getElementById('potInputOverlay').style.display = 'none';
+        }
+
+        // Update pot amount
+        function updatePot() {
+            const input = document.getElementById('potInput');
+            const value = parseInt(input.value) || 0;
+            currentPot = value;
+            document.getElementById('potAmount').textContent = value.toLocaleString();
+            hidePotInput();
+        }
+
+        // Show card selector
+        function showCardSelector(slotIndex) {
+            selectedCardSlot = slotIndex;
+            const overlay = document.getElementById('cardSelectorOverlay');
+            const grid = document.getElementById('cardGrid');
+
+            // Clear existing cards
+            grid.innerHTML = '';
+
+            // Generate card options using inline background-image styles
+            const allCards = generateAllCards();
+            const isPlayerCard = slotIndex >= 5; // Player cards are slots 5 and 6
+
+            allCards.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = isPlayerCard ? 'selectable-card small' : 'selectable-card';
+
+                // Use inline background-image styles instead of CSS classes
+                if (isPlayerCard) {
+                    const imagePath = getSmallCardImagePath(card.suit.name, card.value.file);
+                    cardElement.style.backgroundImage = `url('${imagePath}')`;
+                } else {
+                    const imagePath = getLargeCardImagePath(card.suit.name, card.value.file);
+                    cardElement.style.backgroundImage = `url('${imagePath}')`;
+                }
+
+                // No img element needed - using inline background-image
+                cardElement.innerHTML = '';
+
+                cardElement.onclick = () => selectCard(card);
+                grid.appendChild(cardElement);
+            });
+
+            overlay.style.display = 'flex';
+        }
+
+        // Hide card selector
+        function hideCardSelector() {
+            document.getElementById('cardSelectorOverlay').style.display = 'none';
+            selectedCardSlot = null;
+        }
+
+        // Select a card from the selector
+        function selectCard(card) {
+            if (selectedCardSlot !== null) {
+                const cardElements = document.querySelectorAll('.community-cards .card, .player-hand .player-card');
+                const cardElement = cardElements[selectedCardSlot];
+
+                if (selectedCardSlot < 5) {
+                    // Community card - use CSS background-image
+                    const cssClass = getCardCSSClass(card.suit.name, card.value.file);
+                    cardElement.className = `card ${cssClass}`;
+                    cardElement.innerHTML = ''; // No img element needed
+                    currentCommunityCards[selectedCardSlot] = card;
+                } else {
+                    // Player card - use inline background-image style (consistent with card selector)
+                    cardElement.className = 'player-card';
+                    cardElement.innerHTML = ''; // No img element needed
+                    const imagePath = getSmallCardImagePath(card.suit.name, card.value.file);
+                    cardElement.style.backgroundImage = `url('${imagePath}')`;
+                    currentPlayerCards[selectedCardSlot - 5] = card;
+                }
+
+                updatePlayButtonState();
+            }
+            hideCardSelector();
+        }
+
+        // Toggle community card
+        function toggleCommunityCard(index) {
+            showCardSelector(index);
+        }
+
+        // Select player card
+        function selectPlayerCard(index) {
+            showCardSelector(5 + index); // Offset by 5 for community cards
+        }
+
+        // Deal new random cards
+        function dealNewCards() {
+            const allCards = generateAllCards();
+
+            // Deal 5 community cards using CSS background-image
+            for (let i = 0; i < 5; i++) {
+                const randomCard = allCards[Math.floor(Math.random() * allCards.length)];
+                const cardElement = document.querySelectorAll('.community-cards .card')[i];
+
+                // Use CSS background-image like the selectCard function
+                const cssClass = getCardCSSClass(randomCard.suit.name, randomCard.value.file);
+                cardElement.className = `card ${cssClass}`;
+                cardElement.innerHTML = ''; // No img element needed
+
+                currentCommunityCards[i] = randomCard;
+            }
+
+            // Deal 2 player cards using CSS background-image
+            for (let i = 0; i < 2; i++) {
+                const randomCard = allCards[Math.floor(Math.random() * allCards.length)];
+                const cardElement = document.querySelectorAll('.player-card')[i];
+
+                // Use CSS background-image like the selectCard function
+                const cssClass = getSmallCardCSSClass(randomCard.suit.name, randomCard.value.file);
+                cardElement.className = `player-card ${cssClass}`;
+                cardElement.innerHTML = ''; // No img element needed
+
+                currentPlayerCards[i] = randomCard;
+            }
+
+            updatePlayButtonState();
+        }
+
+        // Reset table
+        function resetTable() {
+            // Reset community cards to empty
+            const communityCards = document.querySelectorAll('.community-cards .card');
+            communityCards.forEach((card, index) => {
+                if (index >= 3) {
+                    card.className = 'card empty';
+                    card.innerHTML = '<div>?</div>';
+                }
+            });
+
+            // Reset pot
+            currentPot = 0;
+            document.getElementById('potAmount').textContent = '0';
+        }
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            switch (e.key) {
+                case 'p':
+                case 'P':
+                    showPotInput();
+                    break;
+                case 'd':
+                case 'D':
+                    dealNewCards();
+                    break;
+                case 'r':
+                case 'R':
+                    resetTable();
+                    break;
+                case 'Escape':
+                    hidePotInput();
+                    hideCardSelector();
+                    break;
+                case 'Enter':
+                    if (document.getElementById('potInputOverlay').style.display === 'flex') {
+                        updatePot();
+                    }
+                    break;
+            }
+        });
+
+        // Betting configuration functions
+        function showBettingConfig() {
+            const overlay = document.getElementById('bettingConfigOverlay');
+
+            // Pre-fill with current values
+            document.getElementById('preflopPot').value = bettingConfig.preflop;
+            document.getElementById('flopPot').value = bettingConfig.flop;
+            document.getElementById('turnPot').value = bettingConfig.turn;
+            document.getElementById('riverPot').value = bettingConfig.river;
+            document.getElementById('finalPot').value = bettingConfig.final;
+
+            overlay.style.display = 'flex';
+        }
+
+        function hideBettingConfig() {
+            document.getElementById('bettingConfigOverlay').style.display = 'none';
+        }
+
+        function saveBettingConfig() {
+            // Get values from inputs
+            bettingConfig.preflop = parseInt(document.getElementById('preflopPot').value) || 0;
+            bettingConfig.flop = parseInt(document.getElementById('flopPot').value) || 0;
+            bettingConfig.turn = parseInt(document.getElementById('turnPot').value) || 0;
+            bettingConfig.river = parseInt(document.getElementById('riverPot').value) || 0;
+            bettingConfig.final = parseInt(document.getElementById('finalPot').value) || 0;
+
+            // Mark as configured and show play button
+            isConfigured = true;
+            document.getElementById('playButton').style.display = 'inline-block';
+            updatePlayButtonState();
+
+            hideBettingConfig();
+        }
+
+        function areAllCardsSelected() {
+            // Check if all 5 community cards and 2 player cards are selected
+            const allCommunitySelected = currentCommunityCards.every(card => card !== null);
+            const allPlayerSelected = currentPlayerCards.every(card => card !== null);
+            return allCommunitySelected && allPlayerSelected;
+        }
+
+        function updatePlayButtonState() {
+            const playButton = document.getElementById('playButton');
+            if (isConfigured && areAllCardsSelected()) {
+                playButton.disabled = false;
+                playButton.textContent = 'Play';
+            } else {
+                playButton.disabled = true;
+                playButton.textContent = areAllCardsSelected() ? 'Configure Betting First' : 'Select All Cards First';
+            }
+        }
+
+        function hideAllCards() {
+            const communityCards = document.querySelectorAll('.community-cards .card');
+            communityCards.forEach(card => {
+                card.className = 'card empty';
+                card.innerHTML = '<div>?</div>';
+            });
+        }
+
+        function hideAllCardsCompletely() {
+            const communityCards = document.querySelectorAll('.community-cards .card');
+            communityCards.forEach(card => {
+                card.className = 'card';
+                card.innerHTML = '';
+                // Keep the card structure but make it invisible until revealed
+                card.style.opacity = '0';
+            });
+        }
+
+        function revealCard(index, card) {
+            const cardElement = document.querySelectorAll('.community-cards .card')[index];
+
+            // Use CSS background-image like the temporary cards
+            const cssClass = getCardCSSClass(card.suit.name, card.value.file);
+            cardElement.className = `card ${cssClass}`;
+            cardElement.innerHTML = ''; // No img element needed
+
+            // Start with full opacity to ensure no gap in visibility
+            cardElement.style.transition = 'opacity 0.1s ease';
+            cardElement.style.opacity = '1';
+        }
+
+        function updatePotAmount(amount) {
+            currentPot = amount;
+            document.getElementById('potAmount').textContent = amount.toLocaleString();
+
+            // Add animation effect
+            const potAmount = document.getElementById('potAmount');
+            potAmount.style.transform = 'scale(1.1)';
+            potAmount.style.color = '#ffeb3b';
+            setTimeout(() => {
+                potAmount.style.transform = 'scale(1)';
+                potAmount.style.color = 'white';
+            }, 300);
+        }
+
+        function createTempCard(card, index) {
+            const tempCard = document.createElement('div');
+
+            // Use CSS background-image like the main community cards
+            const cssClass = getCardCSSClass(card.suit.name, card.value.file);
+            tempCard.className = `temp-card ${cssClass}`;
+
+            // No img element needed - using CSS background-image
+            tempCard.innerHTML = '';
+
+            // Position above the community cards area
+            const communityCardsSection = document.querySelector('.community-cards');
+            const rect = communityCardsSection.getBoundingClientRect();
+            const containerRect = document.querySelector('.poker-container').getBoundingClientRect();
+
+            // Calculate position relative to the container
+            const tempCardWidth = 66; // Base card width
+            const scaledCardWidth = tempCardWidth * 1.25; // Account for 125% scale when revealed
+            const tempCardGap = 12; // Increased gap to accommodate larger scaled cards
+
+            // For flop (first 3 cards), use special spacing to prevent overlap
+            let cardX;
+            if (index < 3) {
+                // Center the 3 flop cards as a group with proper spacing for scaled size
+                const totalTempWidth = (3 * scaledCardWidth) + (2 * tempCardGap);
+                const tempStartX = (390 - totalTempWidth) / 2; // center the group in 390px container
+                cardX = tempStartX + (index * (scaledCardWidth + tempCardGap));
+            } else {
+                // For turn and river cards, center them in the container
+                cardX = (390 - scaledCardWidth) / 2; // center the single card in 390px container
+            }
+
+            tempCard.style.left = `${cardX}px`;
+            tempCard.style.top = `${rect.top - containerRect.top - 140}px`; // 120px above community cards
+
+            document.querySelector('.poker-container').appendChild(tempCard);
+            return tempCard;
+        }
+
+        function animateTempCardToPosition(tempCard, finalIndex) {
+            return new Promise(resolve => {
+                const communityCardsSection = document.querySelector('.community-cards');
+                const rect = communityCardsSection.getBoundingClientRect();
+                const containerRect = document.querySelector('.poker-container').getBoundingClientRect();
+
+                // Calculate final position using correct card dimensions
+                const gap = 8;
+                const cardWidth = 66; // Match actual community card width
+                const totalWidth = (5 * cardWidth) + (4 * gap);
+                const startX = (390 - totalWidth) / 2;
+                const finalX = startX + (finalIndex * (cardWidth + gap));
+                const finalY = rect.top - containerRect.top;
+
+                tempCard.classList.add('moving');
+                tempCard.style.left = `${finalX}px`;
+                tempCard.style.top = `${finalY}px`;
+                tempCard.style.width = '66px'; // Match final community card size
+                tempCard.style.height = '105px'; // Match final community card size
+                tempCard.style.transform = 'scale(1)'; // Reduce from 125% back to normal size during movement
+
+                setTimeout(() => {
+                    resolve();
+                }, 250);
+            });
+        }
+
+        async function playBettingSequence() {
+            if (!isConfigured || isPlaying || !areAllCardsSelected()) return;
+
+            isPlaying = true;
+            document.getElementById('playButton').textContent = 'Playing...';
+            document.getElementById('playButton').disabled = true;
+
+            try {
+                // Use the currently selected cards instead of random ones
+                const gameCards = [...currentCommunityCards]; // Copy the selected cards
+
+                // Hide all community cards completely (no placeholders)
+                hideAllCardsCompletely();
+
+                // Preflop - set pot size
+                updatePotAmount(bettingConfig.preflop);
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Update pot for flop BEFORE revealing cards
+                updatePotAmount(bettingConfig.flop);
+
+                // Flop - reveal first 3 cards with enhanced audio sequence
+                const tempCards = [];
+
+                // Play multiple card flip sounds with staggered timing for dramatic effect
+                playMultipleCardFlips(3, 0, 120); // 3 cards, no base delay, 120ms intervals
+
+                // Create and reveal temp cards with synchronized timing to audio
+                for (let i = 0; i < 3; i++) {
+                    const tempCard = createTempCard(gameCards[i], i);
+                    tempCards.push(tempCard);
+
+                    // Play card flip sound when card is revealed
+                    setTimeout(() => {
+                        playCardFlipSound(); // Play sound when card appears
+                        tempCard.classList.add('revealed');
+                    }, 80 + (i * 120)); // Start reveal slightly after each card flip sound
+
+                    // Wait between each card reveal
+                    if (i < 2) {
+                        await new Promise(resolve => setTimeout(resolve, 280)); // Slightly longer for better timing
+                    }
+                }
+
+                // Wait 1.2 seconds after all 3 cards are revealed for dramatic pause
+                await new Promise(resolve => setTimeout(resolve, 1200));
+
+                // Move temp cards to final positions with enhanced whoosh effect
+                // Play whoosh sound when cards begin moving animation
+                playWhooshSound(); // Play whoosh when movement starts
+
+                for (let i = 0; i < 3; i++) {
+                    // Start animation to move temp card
+                    animateTempCardToPosition(tempCards[i], i);
+
+                    // Reveal real card near the end of the animation to ensure overlap
+                    setTimeout(() => {
+                        revealCard(i, gameCards[i]);
+                    }, 200); // near the end of the 250ms animation
+
+                    // Remove temp card after real card is fully visible
+                    setTimeout(() => {
+                        tempCards[i].remove();
+                    }, 275); // 25ms after the animation completes
+                }
+
+                // Wait for animations to complete
+                await new Promise(resolve => setTimeout(resolve, 250));
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Update pot for turn BEFORE revealing card
+                updatePotAmount(bettingConfig.turn);
+
+                // Turn - reveal 4th card with enhanced timing and audio
+                const turnTempCard = createTempCard(gameCards[3], 3);
+
+                // Play card flip sound when card is revealed
+                setTimeout(() => {
+                    playCardFlipSound(); // Play sound when card appears
+                    turnTempCard.classList.add('revealed');
+                }, 50); // Slightly delayed for better sync
+
+                // Wait 1.3 seconds for dramatic build-up
+                await new Promise(resolve => setTimeout(resolve, 1300));
+
+                // Play enhanced whoosh sound for single card movement
+                playWhooshSound(); // Play whoosh when card begins moving
+                animateTempCardToPosition(turnTempCard, 3);
+
+                setTimeout(() => {
+                    revealCard(3, gameCards[3]);
+                }, 200); // near the end of the 250ms animation
+
+                setTimeout(() => {
+                    turnTempCard.remove();
+                }, 275); // 25ms after the animation completes
+
+                // Wait for animation to complete with dramatic pause
+                await new Promise(resolve => setTimeout(resolve, 250));
+                await new Promise(resolve => setTimeout(resolve, 2200)); // Longer pause for tension
+
+                // Update pot for river BEFORE revealing card
+                updatePotAmount(bettingConfig.river);
+
+                // River - reveal 5th card with final dramatic effect
+                const riverTempCard = createTempCard(gameCards[4], 4);
+
+                // Play card flip sound when card is revealed
+                setTimeout(() => {
+                    playCardFlipSound(); // Play sound when card appears
+                    riverTempCard.classList.add('revealed');
+                }, 60); // Even more dramatic timing
+
+                // Wait 1.5 seconds for maximum tension
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Play final whoosh sound with highest intensity
+                playWhooshSound(); // Play whoosh when card begins moving
+                animateTempCardToPosition(riverTempCard, 4);
+
+                setTimeout(() => {
+                    revealCard(4, gameCards[4]);
+                }, 200); // near the end of the 250ms animation
+
+                setTimeout(() => {
+                    riverTempCard.remove();
+                }, 275); // 25ms after the animation completes
+
+                // Wait for animation to complete
+                await new Promise(resolve => setTimeout(resolve, 250));
+                await new Promise(resolve => setTimeout(resolve, 2000));
+
+                // Final pot
+                updatePotAmount(bettingConfig.final);
+
+            } finally {
+                isPlaying = false;
+                updatePlayButtonState();
+            }
+        }
+
+        // Preload audio files with visible progress
+        function preloadAudio() {
+            return new Promise((resolve) => {
+                console.log('🎵 Starting audio preload...');
+
+                // Update loading screen to show audio loading
+                const progressText = document.getElementById('progressText');
+                const loadingDetails = document.getElementById('loadingDetails');
+                const progressBar = document.getElementById('progressBar');
+
+                progressText.textContent = '0 / 2 audio files loaded';
+                loadingDetails.textContent = 'Loading audio files...';
+                progressBar.style.width = '0%';
+
+                const cardFlipAudio = document.getElementById('cardFlipSound');
+                const whooshAudio = document.getElementById('whooshSound');
+
+                let loadedCount = 0;
+                const totalAudioFiles = 2;
+
+                function updateAudioProgress(fileName = '') {
+                    const percentage = Math.round((loadedCount / totalAudioFiles) * 100);
+                    progressBar.style.width = `${percentage}%`;
+                    progressText.textContent = `${loadedCount} / ${totalAudioFiles} audio files loaded`;
+
+                    if (fileName) {
+                        loadingDetails.textContent = `Loaded: ${fileName}`;
+                    }
+                }
+
+                function onAudioLoaded(audioName) {
+                    loadedCount++;
+                    updateAudioProgress(audioName);
+                    console.log(`✅ Audio file loaded: ${audioName} (${loadedCount}/${totalAudioFiles})`);
+
+                    if (loadedCount === totalAudioFiles) {
+                        console.log('🎵 All audio files preloaded successfully!');
+                        loadingDetails.textContent = 'Audio files ready! Loading graphics...';
+                        setTimeout(resolve, 500); // Small delay to show completion
+                    }
+                }
+
+                function onAudioError(audioName, error) {
+                    console.log(`❌ Failed to load ${audioName}:`, error);
+                    loadedCount++;
+                    updateAudioProgress(`Failed: ${audioName}`);
+
+                    if (loadedCount === totalAudioFiles) {
+                        console.log('🎵 Audio preloading completed (some may have failed)');
+                        loadingDetails.textContent = 'Audio loading completed. Loading graphics...';
+                        setTimeout(resolve, 500);
+                    }
+                }
+
+                // Preload card flip sound
+                cardFlipAudio.addEventListener('loadeddata', () => onAudioLoaded('Card Flip Sound'), { once: true });
+                cardFlipAudio.addEventListener('error', () => onAudioError('card flip', cardFlipAudio.error), { once: true });
+                cardFlipAudio.load();
+
+                // Preload whoosh sound
+                whooshAudio.addEventListener('loadeddata', () => onAudioLoaded('Whoosh Sound'), { once: true });
+                whooshAudio.addEventListener('error', () => onAudioError('whoosh', whooshAudio.error), { once: true });
+                whooshAudio.load();
+
+                // Fallback timeout in case audio loading hangs
+                setTimeout(() => {
+                    if (loadedCount < totalAudioFiles) {
+                        console.log('⏰ Audio preloading timeout - proceeding anyway');
+                        loadingDetails.textContent = 'Audio loading timeout. Loading graphics...';
+                        resolve();
+                    }
+                }, 5000); // Increased timeout to 5 seconds for audio
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Set initial pot display
+            document.getElementById('potAmount').textContent = currentPot.toLocaleString();
+
+            // Preload audio files FIRST, before any graphics
+            await preloadAudio();
+
+            // Then preload card images and wait for completion
+            await preloadCardImages();
+
+            console.log('All assets loaded - poker app ready!');
+        });
+    </script>
+</body>
+
+</html>
