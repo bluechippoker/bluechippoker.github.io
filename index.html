@@ -27,7 +27,14 @@
 
         /* Container optimized for Instagram vertical (9:16 aspect ratio) */
         .poker-container {
-            width: 390px;
+            --container-width: 390px;
+            --card-width: 66px;
+            --card-height: 105px;
+            --card-gap: 8px;
+            --player-card-width: 67.2px;
+            --player-card-height: 56px;
+
+            width: var(--container-width);
             min-height: 844px;
             background: #00FF00;
             /* Chroma key green */
@@ -49,8 +56,8 @@
         }
 
         .card {
-            width: 66px;
-            height: 105px;
+            width: var(--card-width);
+            height: var(--card-height);
             background: white;
             border: 2px solid #333;
             border-radius: 5px;
@@ -714,8 +721,8 @@
         }
 
         .player-card {
-            width: 67.2px;
-            height: 56px;
+            width: var(--player-card-width);
+            height: var(--player-card-height);
             background: white;
             border: 2px solid #333;
             border-radius: 5px;
@@ -1110,9 +1117,9 @@
         /* Temporary animated cards */
         .temp-card {
             position: absolute;
-            width: 66px;
+            width: var(--card-width);
             /* Same size as final community cards */
-            height: 105px;
+            height: var(--card-height);
             /* Same size as final community cards */
             background-color: white;
             border: 2px solid #333;
@@ -1141,28 +1148,25 @@
         /* Responsive design for smaller devices */
         @media (max-width: 420px) {
             .poker-container {
-                width: 95vw;
+                --container-width: 95vw;
+                --card-width: 56px;
+                --card-height: 89px;
+                --card-gap: 6px;
+                --player-card-width: 57px;
+                --player-card-height: 48px;
+
+                width: var(--container-width);
                 min-height: 100vh;
                 gap: 30px;
                 padding: 20px 0;
             }
 
-            .card {
-                width: 56px;
-                height: 89px;
-            }
-
-            .player-card {
-                width: 57px;
-                height: 48px;
-            }
-
             .community-cards {
-                gap: 6px;
+                gap: var(--card-gap);
             }
 
             .player-hand {
-                gap: 6px;
+                gap: var(--card-gap);
             }
 
             .pot-display {
@@ -1210,26 +1214,23 @@
 
         @media (max-width: 360px) {
             .poker-container {
-                width: 98vw;
+                --container-width: 98vw;
+                --card-width: 50px;
+                --card-height: 80px;
+                --card-gap: 4px;
+                --player-card-width: 51px;
+                --player-card-height: 43px;
+
+                width: var(--container-width);
                 gap: 25px;
             }
 
-            .card {
-                width: 50px;
-                height: 80px;
-            }
-
-            .player-card {
-                width: 51px;
-                height: 43px;
-            }
-
             .community-cards {
-                gap: 4px;
+                gap: var(--card-gap);
             }
 
             .player-hand {
-                gap: 4px;
+                gap: var(--card-gap);
             }
 
             .pot-display {
@@ -1970,9 +1971,12 @@
             const communityCardsSection = document.querySelector('.community-cards');
             const rect = communityCardsSection.getBoundingClientRect();
             const containerRect = document.querySelector('.poker-container').getBoundingClientRect();
+            const container = document.querySelector('.poker-container');
 
-            // Calculate position relative to the container
-            const tempCardWidth = 66; // Base card width
+            // Get current CSS variable values for responsive sizing
+            const styles = getComputedStyle(container);
+            const containerWidth = parseFloat(styles.getPropertyValue('--container-width'));
+            const tempCardWidth = parseFloat(styles.getPropertyValue('--card-width'));
             const scaledCardWidth = tempCardWidth * 1.25; // Account for 125% scale when revealed
             const tempCardGap = 12; // Increased gap to accommodate larger scaled cards
 
@@ -1981,15 +1985,15 @@
             if (index < 3) {
                 // Center the 3 flop cards as a group with proper spacing for scaled size
                 const totalTempWidth = (3 * scaledCardWidth) + (2 * tempCardGap);
-                const tempStartX = (390 - totalTempWidth) / 2; // center the group in 390px container
+                const tempStartX = (containerWidth - totalTempWidth) / 2; // center the group in container
                 cardX = tempStartX + (index * (scaledCardWidth + tempCardGap));
             } else {
                 // For turn and river cards, center them in the container
-                cardX = (390 - scaledCardWidth) / 2; // center the single card in 390px container
+                cardX = (containerWidth - scaledCardWidth) / 2; // center the single card in container
             }
 
             tempCard.style.left = `${cardX}px`;
-            tempCard.style.top = `${rect.top - containerRect.top - 140}px`; // 120px above community cards
+            tempCard.style.top = `${rect.top - containerRect.top - 140}px`; // 140px above community cards
 
             document.querySelector('.poker-container').appendChild(tempCard);
             return tempCard;
@@ -2000,20 +2004,26 @@
                 const communityCardsSection = document.querySelector('.community-cards');
                 const rect = communityCardsSection.getBoundingClientRect();
                 const containerRect = document.querySelector('.poker-container').getBoundingClientRect();
+                const container = document.querySelector('.poker-container');
+
+                // Get current CSS variable values for responsive sizing
+                const styles = getComputedStyle(container);
+                const containerWidth = parseFloat(styles.getPropertyValue('--container-width'));
+                const cardWidth = parseFloat(styles.getPropertyValue('--card-width'));
+                const cardHeight = parseFloat(styles.getPropertyValue('--card-height'));
+                const gap = parseFloat(styles.getPropertyValue('--card-gap'));
 
                 // Calculate final position using correct card dimensions
-                const gap = 8;
-                const cardWidth = 66; // Match actual community card width
                 const totalWidth = (5 * cardWidth) + (4 * gap);
-                const startX = (390 - totalWidth) / 2;
+                const startX = (containerWidth - totalWidth) / 2;
                 const finalX = startX + (finalIndex * (cardWidth + gap));
                 const finalY = rect.top - containerRect.top;
 
                 tempCard.classList.add('moving');
                 tempCard.style.left = `${finalX}px`;
                 tempCard.style.top = `${finalY}px`;
-                tempCard.style.width = '66px'; // Match final community card size
-                tempCard.style.height = '105px'; // Match final community card size
+                tempCard.style.width = `${cardWidth}px`; // Match final community card size
+                tempCard.style.height = `${cardHeight}px`; // Match final community card size
                 tempCard.style.transform = 'scale(1)'; // Reduce from 125% back to normal size during movement
 
                 setTimeout(() => {
