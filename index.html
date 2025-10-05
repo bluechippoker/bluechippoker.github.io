@@ -1984,10 +1984,13 @@
 
             // Get current CSS variable values for responsive sizing
             const styles = getComputedStyle(container);
-            const containerWidth = parseFloat(styles.getPropertyValue('--container-width'));
             const tempCardWidth = parseFloat(styles.getPropertyValue('--card-width'));
+            const tempCardHeight = parseFloat(styles.getPropertyValue('--card-height'));
             const scaledCardWidth = tempCardWidth * 1.25; // Account for 125% scale when revealed
             const tempCardGap = 12; // Increased gap to accommodate larger scaled cards
+
+            // Use actual container width from bounding rect instead of CSS variable
+            const containerWidth = containerRect.width;
 
             // For flop (first 3 cards), use special spacing to prevent overlap
             let cardX;
@@ -2017,10 +2020,12 @@
 
                 // Get current CSS variable values for responsive sizing
                 const styles = getComputedStyle(container);
-                const containerWidth = parseFloat(styles.getPropertyValue('--container-width'));
                 const cardWidth = parseFloat(styles.getPropertyValue('--card-width'));
                 const cardHeight = parseFloat(styles.getPropertyValue('--card-height'));
                 const gap = parseFloat(styles.getPropertyValue('--card-gap'));
+
+                // Use actual container width from bounding rect instead of CSS variable
+                const containerWidth = containerRect.width;
 
                 // Calculate final position using correct card dimensions
                 const totalWidth = (5 * cardWidth) + (4 * gap);
